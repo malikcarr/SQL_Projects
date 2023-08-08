@@ -1,3 +1,4 @@
+--Code written in BigQuery
 SELECT * 
 FROM `portfolio-project-395319.Covid_Data.Covid_Deaths`
 WHERE continent IS NOT NULL
