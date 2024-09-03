@@ -1,1 +1,10 @@
 -- Link to dataset used: https://data.cms.gov/provider-data/dataset/xubh-q36u
+
+-- Data Cleaning and checking for missing values in important columns
+SELECT
+    COUNT(*) AS TotalRows,
+    COUNT(HospitalName) AS HospitalsWithName,
+    COUNT(HospitalType) AS HospitalsWithType,
+    COUNT(Ownership) AS HospitalsWithOwnership
+FROM
+    HospitalGeneralInfo;
