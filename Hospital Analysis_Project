@@ -3,8 +3,57 @@
 -- Data Cleaning and checking for missing values in important columns
 SELECT
     COUNT(*) AS TotalRows,
-    COUNT(HospitalName) AS HospitalsWithName,
-    COUNT(HospitalType) AS HospitalsWithType,
-    COUNT(Ownership) AS HospitalsWithOwnership
+    COUNT(Facility_Name) AS HospitalName,
+    COUNT(Hospital_Type) AS HospitalType,
+    COUNT(Ownership)
 FROM
     HospitalGeneralInfo;
+
+-- Calculating Average Readmission Rates by Hospital
+SELECT
+    HospitalName,
+    AVG(ReadmissionRate) AS AverageReadmissionRate
+FROM
+    HospitalGeneralInfo
+GROUP BY
+    HospitalName
+ORDER BY
+    AverageReadmissionRate DESC;
+
+-- Analyzing Mortality Rate Across Hospitals
+SELECT
+    HospitalName,
+    (AVG(Mortality_Rate)/100) AS AvgMortRate
+FROM
+    HospitalGeneralInfo
+GROUP BY
+    HospitalName
+ORDER BY
+    AvgSatisfactionScore DESC;
+
+-- Identify hospitals offering specific services
+SELECT
+    HospitalName,
+    CASE
+        WHEN HospitalType = 'Childrens' THEN 'Child Services Available'
+        ELSE 'Not Childrens Hospital'
+    END AS ChildrensHospitals,
+    CASE
+        WHEN HospitalType = 'Psychiatric' THEN 'Psychiatric Services Available'
+        ELSE 'No Psychiatric Services'
+    END AS PsychiatricServicesStatus
+FROM
+    HospitalGeneralInfo
+WHERE
+    ChildrensHospitals = 'Child Services Available' OR PsychiatricServicesStatus = 'Psychiatric Services Available';
+
+-- Compare Average Readmission Rates by Ownership Type
+SELECT
+    Ownership,
+    AVG(ReadmissionRate) AS AverageReadmissionRate
+FROM
+    HospitalGeneralInfo
+GROUP BY
+    Ownership
+ORDER BY
+    AverageReadmissionRate DESC;
