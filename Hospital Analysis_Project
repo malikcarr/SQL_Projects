@@ -1,5 +1,26 @@
 -- Link to dataset used: https://data.cms.gov/provider-data/dataset/xubh-q36u
 
+/*
+Title: Analyzing Hospital Performance Metrics
+
+Description:
+This project involved analyzing the Hospital General Information dataset to assess various performance metrics of hospitals. The analysis included calculating average readmission rates, evaluating mortality rate, and identifying hospitals with specific services. Additionally, comparisons were made based on hospital ownership types to understand their impact on performance metrics. This analysis provides insights into hospital performance and can help in identifying areas for improvement.
+
+Key Insights:
+
+Identified hospitals with the highest and lowest average readmission rates.
+Evaluated mortality rate across hospitals.
+Found hospitals offering key services like childrens care and psychiatric services.
+Compared performance metrics based on hospital ownership types.
+
+SQL Code Included:
+Data Cleaning
+Average Readmission Rates
+Patient Satisfaction Scores
+Specific Services Offered
+Comparison by Ownership Type
+*/
+
 -- Data Cleaning and checking for missing values in important columns
 SELECT
     COUNT(*) AS TotalRows,
